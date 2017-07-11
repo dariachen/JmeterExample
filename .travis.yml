@@ -5,5 +5,5 @@ install:
 before_script:
   - ls -al
 script:
-  - ant -buildfile build.xml -Dtestpath=$HOME/JmeterExample/http -Dtest="google" -Dbasedir=$HOME/JmeterExample/http -Djmeter.home="$HOME/JmeterExample/apache-jmeter-3.2"
+  - ant -buildfile build.xml -Dtestpath=$working_dir/JmeterExample/http -Dtest="google" -Dbasedir=$working_dir/JmeterExample/http -Djmeter.home="$working_dir/JmeterExample/apache-jmeter-3.2"
 
