@@ -1,3 +1,9 @@
 language: java
+install:
+  - wget -c http://apache.stu.edu.tw//jmeter/binaries/apache-jmeter-3.2.tgz
+  - tar -xf apache-jmeter-3.2.tgz
 before_script:
   - ls -al
+  - cd apache-jmeter-3.2
+script:
+  - ant -Dtest=http/google
