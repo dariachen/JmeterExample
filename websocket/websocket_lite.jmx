@@ -13,26 +13,6 @@
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="connection setting" enabled="true">
         <collectionProp name="Arguments.arguments">
-          <elementProp name="api_host" elementType="Argument">
-            <stringProp name="Argument.name">api_host</stringProp>
-            <stringProp name="Argument.value">localhost</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="api_port" elementType="Argument">
-            <stringProp name="Argument.name">api_port</stringProp>
-            <stringProp name="Argument.value">3000</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="oauth_host" elementType="Argument">
-            <stringProp name="Argument.name">oauth_host</stringProp>
-            <stringProp name="Argument.value">localhost</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="oauth_port" elementType="Argument">
-            <stringProp name="Argument.name">oauth_port</stringProp>
-            <stringProp name="Argument.value">3000</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="ws_host" elementType="Argument">
             <stringProp name="Argument.name">ws_host</stringProp>
             <stringProp name="Argument.value">localhost</stringProp>
@@ -43,20 +23,10 @@
             <stringProp name="Argument.value">8000</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="oauth_protocol" elementType="Argument">
-            <stringProp name="Argument.name">oauth_protocol</stringProp>
-            <stringProp name="Argument.value">http</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="api_protocol" elementType="Argument">
-            <stringProp name="Argument.name">api_protocol</stringProp>
-            <stringProp name="Argument.value">http</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="device setting" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="device setting" enabled="false">
         <collectionProp name="Arguments.arguments">
           <elementProp name="deviceID" elementType="Argument">
             <stringProp name="Argument.name">deviceID</stringProp>
@@ -196,28 +166,29 @@
         <objProp>
           <name>saveConfig</name>
           <value class="SampleSaveConfiguration">
-            <time>true</time>
-            <latency>true</latency>
-            <timestamp>true</timestamp>
-            <success>true</success>
-            <label>true</label>
-            <code>true</code>
-            <message>true</message>
-            <threadName>true</threadName>
-            <dataType>true</dataType>
+            <time>false</time>
+            <latency>false</latency>
+            <timestamp>false</timestamp>
+            <success>false</success>
+            <label>false</label>
+            <code>false</code>
+            <message>false</message>
+            <threadName>false</threadName>
+            <dataType>false</dataType>
             <encoding>false</encoding>
-            <assertions>true</assertions>
-            <subresults>true</subresults>
+            <assertions>false</assertions>
+            <subresults>false</subresults>
             <responseData>false</responseData>
             <samplerData>false</samplerData>
             <xml>false</xml>
             <fieldNames>false</fieldNames>
             <responseHeaders>false</responseHeaders>
-            <requestHeaders>false</requestHeaders>
+            <requestHeaders>true</requestHeaders>
             <responseDataOnError>false</responseDataOnError>
             <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
             <assertionsResultsToSave>0</assertionsResultsToSave>
-            <bytes>true</bytes>
+            <url>true</url>
+            <hostname>true</hostname>
             <threadCounts>true</threadCounts>
           </value>
         </objProp>
@@ -327,7 +298,7 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <intProp name="LoopController.loops">-1</intProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
@@ -338,355 +309,390 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_boolean)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_boolean}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(0, 1)}}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="deviceKey" elementType="Argument">
+              <stringProp name="Argument.name">deviceKey</stringProp>
+              <stringProp name="Argument.value">none</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
         <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_integer)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_integer}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(0, 100)}}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_float)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_float}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(1, 999999)}.${__Random(1, 999999)}}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_hex)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_hex}&quot;,&quot;values&quot;:{&quot;value&quot;:&quot;${__RandomString(30,ABCDEF0123456789)}&quot;}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_string)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_string}&quot;,&quot;values&quot;:{&quot;value&quot;:&quot;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789)}&quot;}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_GPIO)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_gpio}&quot;,&quot;values&quot;:{&quot;value&quot;:1}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_PWM)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_pwm}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(1, 100)},&quot;period&quot;:${__Random(1, 100)}}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_boolean)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_boolean}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(0, 1)}}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_integer)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_integer}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(0, 100)}}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_float)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_float}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(1, 999999)}.${__Random(1, 999999)}}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_hex)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_hex}&quot;,&quot;values&quot;:{&quot;value&quot;:&quot;${__RandomString(30,ABCDEF0123456789)}&quot;}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_string)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_string}&quot;,&quot;values&quot;:{&quot;value&quot;:&quot;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789)}&quot;}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_GPIO)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_gpio}&quot;,&quot;values&quot;:{&quot;value&quot;:1}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
-        <hashTree/>
-        <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_PWM)" enabled="true">
-          <stringProp name="serverAddress">${ws_host}</stringProp>
-          <stringProp name="serverPort">8000</stringProp>
-          <stringProp name="implementation">RFC6455 (v13)</stringProp>
-          <stringProp name="protocol">ws</stringProp>
-          <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
-          <stringProp name="contentEncoding">UTF-8</stringProp>
-          <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_pwm}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(1, 100)},&quot;period&quot;:${__Random(1, 100)}}}</stringProp>
-          <stringProp name="connectionTimeout">5000</stringProp>
-          <stringProp name="responseTimeout">2000</stringProp>
-          <boolProp name="ignoreSslErrors">true</boolProp>
-          <boolProp name="streamingConnection">true</boolProp>
-          <stringProp name="connectionId">chen</stringProp>
-          <stringProp name="responsePattern"></stringProp>
-          <stringProp name="closeConncectionPattern"></stringProp>
-          <stringProp name="proxyAddress"></stringProp>
-          <stringProp name="proxyPassword"></stringProp>
-          <stringProp name="proxyPort"></stringProp>
-          <stringProp name="proxyUsername"></stringProp>
-          <stringProp name="messageBacklog">3</stringProp>
-          <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
+          <stringProp name="WhileController.condition">&quot;${deviceKey}&quot; != &quot;&lt;EOF&gt;&quot;</stringProp>
+        </WhileController>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="filename">file.txt</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="variableNames">deviceID,deviceKey</stringProp>
+            <stringProp name="delimiter">,</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">false</boolProp>
+            <boolProp name="stopThread">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_boolean):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_boolean}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(0, 1)}}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_integer):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="true">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_integer}&quot;,&quot;values&quot;:{&quot;value&quot;:555.999}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">false</boolProp>
+            <stringProp name="connectionId"></stringProp>
+            <stringProp name="responsePattern">1001</stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_float):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_float}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(1, 999999)}.${__Random(1, 999999)}}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_hex):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_hex}&quot;,&quot;values&quot;:{&quot;value&quot;:&quot;${__RandomString(30,ABCDEF0123456789)}&quot;}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_string):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_string}&quot;,&quot;values&quot;:{&quot;value&quot;:&quot;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789)}&quot;}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_GPIO):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_gpio}&quot;,&quot;values&quot;:{&quot;value&quot;:1}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (display_PWM):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${display_pwm}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(1, 100)},&quot;period&quot;:${__Random(1, 100)}}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_boolean):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_boolean}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(0, 1)}}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_integer):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_integer}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(0, 100)}}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_float):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_float}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(1, 999999)}.${__Random(1, 999999)}}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_hex):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_hex}&quot;,&quot;values&quot;:{&quot;value&quot;:&quot;${__RandomString(30,ABCDEF0123456789)}&quot;}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_string):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_string}&quot;,&quot;values&quot;:{&quot;value&quot;:&quot;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789)}&quot;}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_GPIO):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_gpio}&quot;,&quot;values&quot;:{&quot;value&quot;:1}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="Upload Data (control_PWM):/deviceId/${deviceID}/deviceKey/${deviceKey}" enabled="false">
+            <stringProp name="serverAddress">${ws_host}</stringProp>
+            <stringProp name="serverPort">8000</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="contextPath">/deviceId/${deviceID}/deviceKey/${deviceKey}</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">{&quot;datachannelId&quot;:&quot;${control_pwm}&quot;,&quot;values&quot;:{&quot;value&quot;:${__Random(1, 100)},&quot;period&quot;:${__Random(1, 100)}}}</stringProp>
+            <stringProp name="connectionTimeout">5000</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <boolProp name="ignoreSslErrors">true</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">chen</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern"></stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+          <stringProp name="IfController.condition">&quot;${deviceKey}&quot; != &quot;&lt;EOF&gt;&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
         <hashTree/>
       </hashTree>
     </hashTree>
