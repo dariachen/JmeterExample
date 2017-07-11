@@ -7,5 +7,5 @@ before_script:
   - cp /home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2/extras/ant-jmeter-1.1.1.jar ./
   - ls -al
 script:
-  - ant -buildfile build.xml -Dtestpath=/home/travis/build/dariachen/JmeterExample/http -Dtest="google" -Dbasedir=/home/travis/build/dariachen/JmeterExample/http -Djmeter.home="/home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2"
+  - ant -buildfile build.xml -Dtestpath=./http -Dtest="google" -Dbasedir=/home/travis/build/dariachen/JmeterExample -Djmeter.home="/home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2"
 
