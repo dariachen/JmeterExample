@@ -4,7 +4,6 @@ install:
   - tar -xf apache-jmeter-3.2.tgz
 before_script:
   - ls -al
-  - cd apache-jmeter-3.2
 script:
   - ant -buildfile build.xml -Dtestpath=$HOME/JmeterExample/http -Dtest="google" -Dbasedir=$HOME/JmeterExample/http -Djmeter.home="$HOME/JmeterExample/apache-jmeter-3.2"
 
