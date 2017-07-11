@@ -6,5 +6,5 @@ before_script:
   - ls -al
   - cd apache-jmeter-3.2
 script:
-  - ant -Dtestpath=$HOME/JmeterExample/http -Dtest="google" -Dbasedir=$HOME/JmeterExample/http -Djmeter.home="$HOME/JmeterExample/apache-jmeter-3.2"
+  - ant -buildfile build.xml -Dtestpath=$HOME/JmeterExample/http -Dtest="google" -Dbasedir=$HOME/JmeterExample/http -Djmeter.home="$HOME/JmeterExample/apache-jmeter-3.2"
 
