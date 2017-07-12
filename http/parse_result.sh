@@ -1,4 +1,4 @@
-if grep 's="false"' ./result/*.jtl; then
+if grep 's="false"' *.jtl; then
     echo found
     exit 1
 else
