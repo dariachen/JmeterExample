@@ -25,7 +25,7 @@ deploy:
   bucket: "e2etestresult"
   skip_cleanup: true
   region: us-west-2
-  local_dir: ./http
+  local_dir: ./http/result
 after_deploy:
   - cd ./http
   - chmod 744 parse_result.sh
