@@ -2,6 +2,15 @@
 *.jtl
 *.html
 
-# test dependency tool
+# build dependency tool
 ant-jmeter-1.1.1.jar
+
+# report generated assets
 jmeter-results-detail-report_21.xsl
+./http/expand.png
+./http/collapse.png
+expand.png
+collapse.png
+
+#testing script
+local_ant.sh
