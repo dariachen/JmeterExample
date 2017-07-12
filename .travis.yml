@@ -17,9 +17,6 @@ before_script:
 script:
   - jdk_switcher use oraclejdk8
   - ant -buildfile build.xml -Dtestpath=./http -Dtest="google_02" -Dbasedir=/home/travis/build/dariachen/JmeterExample -Djmeter.home="/home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2"
-  - cd ./http
-  - chmod 744 parse_result.sh
-  - sh parse_result.sh
 deploy:
   - provider: s3
   - provider: codedeploy
@@ -33,3 +30,7 @@ deploy:
     region: us-west-2
     on:
       all_branches: true
+after_deploy:
+  - cd ./http
+  - chmod 744 parse_result.sh
+  - sh parse_result.sh
