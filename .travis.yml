@@ -14,6 +14,9 @@ before_script:
   - cp /home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2/extras/collapse.png ./
   - cp /home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2/extras/expand.png ./
   - ls -al
+branches:
+  only:
+  - master
 script:
   - jdk_switcher use oraclejdk8
   - ant -buildfile build.xml -Dtestpath=./http -Dtest="google_02" -Dbasedir=/home/travis/build/dariachen/JmeterExample -Djmeter.home="/home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2"
@@ -24,9 +27,10 @@ deploy:
     secure: bajGOaHanVj9JY87HeagO6i3v+ZrkZWP0Ml5O4LpkIfsVbr7h7JhYbLWpXLGyln0qVyXAnx0tHbrAqP10FOTrNcPIQqAZ1Ex5yp6DWf9nZJRlTYA0Cp0Hkcm0Mj5TzPpyO9yA4ldNIGiHflivIoCJU4W7IPVX3rC+08pOa8yRKaMXRpTOheW9v6PrjFf4djl7m0hV8Vpo4M04PLhCfU/Q12XqT3bUM5b8Zqojy9acnL9dTfiyVaDxXGO0iYK2zXKNHmiqSNAI7nV72ZUA+8jqWQ0Jg9RC8hqS8xFCorI6C9f1fSIOC8cwAUofqDo+ZWBVmivSrAPJg7zk4W/4Ffg2CpBZPKVvgxo5RcAcWahLxHGTllWehXfZCFMexyTMobHlmcSiKmT+/2dagYotZfozuJLNf3Rw7EwH5Mmk71JMklWEalsj7x4gLP4fvR/bzhf5qZsDQu5927lIdZJzwk3qodStV1biQ17K8MinJQ5GWA/YHxlPDDOp4FDsMGQRMGKin0e/8yN3YwJRkMXbjWBUPBU8Duw/4QxUBU8IPtSH+5tDkIBzNdDYg+OZ40OpGxeoWqZ4gDatJPt2aGE3yhZjMiYB8lBTIuh8y4RhMgdKsZqrf4LcTqGfjaFON+mCJKyop754D0KVcYUqvJ/rJWKKcDOb/krDIxcr3LqwQ7VyiE=
   bucket: "e2etestresult"
   skip_cleanup: true
+  acl: public_read
   region: ap-northeast-1
   local_dir: ./http/result
-after_deploy:
+before_deploy:
   - cd ./http
   - chmod 744 parse_result.sh
   - sh parse_result.sh
