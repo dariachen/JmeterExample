@@ -25,7 +25,7 @@ script:
   - chmod 744 parse_result.sh
   - sh parse_result.sh
   - cd ..
-after_script:
+after_success:
   addons:
     artifacts:
       s3_region: ap-northeast-1
