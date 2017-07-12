@@ -17,7 +17,6 @@ before_script:
 branches:
   only:
   - master
-  - feature/travis-deploy
 script:
   - jdk_switcher use oraclejdk8
   - ant -buildfile build.xml -Dtestpath=./http -Dtest="google_02" -Dbasedir=/home/travis/build/dariachen/JmeterExample -Djmeter.home="/home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2"
