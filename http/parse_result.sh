@@ -1,4 +1,4 @@
-if grep 's="false"' google_02.jtl; then
+if grep 's="false"' ./result/*.jtl; then
     echo found
     exit 1
 else
