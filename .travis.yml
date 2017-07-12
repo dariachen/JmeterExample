@@ -28,7 +28,7 @@ deploy:
   bucket: "e2etestresult"
   skip_cleanup: true
   acl: public_read
-  region: us-west-2
+  region: ap-northeast-1
   local_dir: ./http/result
 before_deploy:
   - cd ./http
