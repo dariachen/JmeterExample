@@ -39,7 +39,7 @@
         -Djmeter.home=.. - path to JMeter home directory (defaults to parent of this build file)
         -Dreport.title="My Report" - title for html report (default is 'Load Test Results')
     </description>
-    
+
     <property name="testpath" value="${user.dir}"/>
     <property name="jmeter.home" value="${basedir}/.."/>
     <property name="report.title" value="Load Test Results"/>
@@ -82,7 +82,7 @@
 
     <target name="run">
         <echo>funcMode = ${funcMode}</echo>
-        <delete file="${testpath}/result/${test}_${report.datestamp}.html"/>
+        <delete file="${testpath}/result/${test}_${report.timestamp}.html"/>
         <jmeter
             jmeterhome="${jmeter.home}"
             testplan ="${testpath}/${test}.jmx"
@@ -115,12 +115,15 @@
     </target>
 
     <target name="xslt-report" depends="_message_xalan">
-        <tstamp><format property="report.datestamp" pattern="yyyy/MM/dd HH:mm"/></tstamp>
+        <tstamp>
+            <format property="report.datestamp" pattern="yyyy/MM/dd HH:mm"/>
+            <format property="report.timestamp" pattern="yyyyMMddHHmm"/>
+        </tstamp>
         <xslt
             classpathref="xslt.classpath"
             force="true"
             in="${testpath}/${test}.jtl"
-            out="${testpath}/result/${test}_${report.datestamp}.html"
+            out="${testpath}/result/${test}_${report.timestamp}.html"
             style="${basedir}/jmeter-results-detail-report${style_version}.xsl">
             <param name="showData" expression="${show-data}"/>
             <param name="titleReport" expression="${report.title}"/>
