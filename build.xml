@@ -82,7 +82,7 @@
 
     <target name="run">
         <echo>funcMode = ${funcMode}</echo>
-        <delete file="${testpath}/${test}.html"/>
+        <delete file="${testpath}/result/${test}_${report.datestamp}.html"/>
         <jmeter
             jmeterhome="${jmeter.home}"
             testplan ="${testpath}/${test}.jmx"
@@ -120,7 +120,7 @@
             classpathref="xslt.classpath"
             force="true"
             in="${testpath}/${test}.jtl"
-            out="${testpath}/${test}.html"
+            out="${testpath}/result/${test}_${report.datestamp}.html"
             style="${basedir}/jmeter-results-detail-report${style_version}.xsl">
             <param name="showData" expression="${show-data}"/>
             <param name="titleReport" expression="${report.title}"/>
