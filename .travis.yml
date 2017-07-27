@@ -19,7 +19,7 @@ branches:
   - master
 script:
   - jdk_switcher use oraclejdk8
-  - ant -buildfile build.xml -Dtestpath=./http -Dtest="google" -Dbasedir=/home/travis/build/dariachen/JmeterExample -Djmeter.home="/home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2"
+  - ant -buildfile build.xml -Dtestpath=./Travis-ci-example -Dtest="google" -Dbasedir=/home/travis/build/dariachen/JmeterExample -Djmeter.home="/home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2"
 deploy:
   provider: s3
   access_key_id: AKIAIOOONVMT6LL6EZ2A
@@ -29,8 +29,8 @@ deploy:
   skip_cleanup: true
   acl: public_read
   region: ap-northeast-1
-  local_dir: ./http/result
+  local_dir: ./Travis-ci-example/result
 after_deploy:
-  - cd ./http
+  - cd ./Travis-ci-example
   - chmod 744 parse_result.sh
   - sh parse_result.sh || travis_terminate 1;
