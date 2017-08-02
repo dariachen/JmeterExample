@@ -5,18 +5,17 @@ addons:
     packages:
       - oracle-java8-installer
 install:
+  - ls -al ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/
   - \[ -d ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/bin \] || wget -c http://apache.stu.edu.tw//jmeter/binaries/apache-jmeter-3.2.tgz
   - \[ ! -f ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2.tgz \] || tar -xf apache-jmeter-3.2.tgz
-  - ls -al
   - ls -al ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/
+  - pwd && ls -al
 before_script:
   - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/ant-jmeter-1.1.1.jar ./
   - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/jmeter-results-detail-report_21.xsl ./
   - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/collapse.png ./
   - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/expand.png ./
   - ls -al
-  - echo ${TRAVIS_BUILD_NUMBER}
-  - echo $TRAVIS_BUILD_NUMBER
 cache:
   directories:
   - ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/*
