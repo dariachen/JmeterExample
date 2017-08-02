@@ -8,6 +8,7 @@ install:
   - \[ -d ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2 \] || wget -c http://apache.stu.edu.tw//jmeter/binaries/apache-jmeter-3.2.tgz
   - \[ ! -f ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2.tgz \] || tar -xf apache-jmeter-3.2.tgz
   - ls -al
+  - ls -al ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/
 before_script:
   - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/ant-jmeter-1.1.1.jar ./
   - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/jmeter-results-detail-report_21.xsl ./
