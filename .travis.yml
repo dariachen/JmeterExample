@@ -18,7 +18,7 @@ before_script:
   - ls -al
 cache:
   directories:
-  - ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/*
+  - ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2
 branches:
   only:
   - master 
