@@ -20,7 +20,8 @@ cache:
   - ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2
 branches:
   only:
-  - master
+  - master 
+  - feature/cache
 script:
   - jdk_switcher use oraclejdk8
   - ant -buildfile build.xml -Dtestpath=./Travis-ci-example -Dtest="google" -Dbasedir=/home/travis/build/dariachen/JmeterExample -Djmeter.home="/home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2"
