@@ -17,6 +17,7 @@ before_script:
   - echo ${TRAVIS_BUILD_NUMBER}
   - echo $TRAVIS_BUILD_NUMBER
 cache:
+  directories:
   - ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2
 branches:
   only:
