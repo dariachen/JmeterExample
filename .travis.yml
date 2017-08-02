@@ -5,8 +5,8 @@ addons:
     packages:
       - oracle-java8-installer
 install:
-  - [ -d ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2 ] || wget -c http://apache.stu.edu.tw//jmeter/binaries/apache-jmeter-3.2.tgz
-  - [ -f ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2.tgz ] && tar -xf apache-jmeter-3.2.tgz
+  - \[ -d ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2 \] || wget -c http://apache.stu.edu.tw//jmeter/binaries/apache-jmeter-3.2.tgz
+  - \[ -f ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2.tgz \] && tar -xf apache-jmeter-3.2.tgz
 before_script:
   - ls -al
   - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/ant-jmeter-1.1.1.jar ./
