@@ -14,6 +14,10 @@ before_script:
   - cp /home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2/extras/collapse.png ./
   - cp /home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2/extras/expand.png ./
   - ls -al
+  - echo ${TRAVIS_BUILD_NUMBER}
+  - echo $TRAVIS_BUILD_NUMBER
+cache:
+  - $TRAVIS_BUILD_DIR/apache-jmeter-3.2
 branches:
   only:
   - master
