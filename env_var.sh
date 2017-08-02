@@ -1,0 +1,4 @@
+#! bin/bash
+echo ${TRAVIS_BUILD_NUMBER}
+echo $TRAVIS_COMMIT
+cd $TRAVIS_BUILD_DIR

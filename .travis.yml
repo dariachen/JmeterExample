@@ -26,6 +26,8 @@ branches:
 script:
   - jdk_switcher use oraclejdk8
   - ant -buildfile build.xml -Dtestpath=./Travis-ci-example -Dtest="google" -Dbasedir=/home/travis/build/dariachen/JmeterExample -Djmeter.home="/home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2"
+after_script:
+  - sh env_var.sh
 deploy:
   provider: s3
   access_key_id: AKIAIOOONVMT6LL6EZ2A
