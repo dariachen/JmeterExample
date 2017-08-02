@@ -5,19 +5,19 @@ addons:
     packages:
       - oracle-java8-installer
 install:
-  - wget -c http://apache.stu.edu.tw//jmeter/binaries/apache-jmeter-3.2.tgz
-  - tar -xf apache-jmeter-3.2.tgz
+  - [ -d ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2 ] || wget -c http://apache.stu.edu.tw//jmeter/binaries/apache-jmeter-3.2.tgz
+  - [ -f ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2.tgz ] && tar -xf apache-jmeter-3.2.tgz
 before_script:
   - ls -al
-  - cp /home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2/extras/ant-jmeter-1.1.1.jar ./
-  - cp /home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2/extras/jmeter-results-detail-report_21.xsl ./
-  - cp /home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2/extras/collapse.png ./
-  - cp /home/travis/build/dariachen/JmeterExample/apache-jmeter-3.2/extras/expand.png ./
+  - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/ant-jmeter-1.1.1.jar ./
+  - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/jmeter-results-detail-report_21.xsl ./
+  - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/collapse.png ./
+  - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/expand.png ./
   - ls -al
   - echo ${TRAVIS_BUILD_NUMBER}
   - echo $TRAVIS_BUILD_NUMBER
 cache:
-  - $TRAVIS_BUILD_DIR/apache-jmeter-3.2
+  - ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2
 branches:
   only:
   - master
