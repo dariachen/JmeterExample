@@ -15,7 +15,7 @@ before_script:
   - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/jmeter-results-detail-report_21.xsl ./
   - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/collapse.png ./
   - cp ${TRAVIS_BUILD_DIR}/apache-jmeter-3.2/extras/expand.png ./
-  - mkdir $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/
+  - mkdir -p $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/
   - cp expand.png $TRAVIS_BUILD_DIR/uploadBuild/7688/$TRAVIS_BUILD_NUMBER/expand.png
   - ls -al
 cache:
